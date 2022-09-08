@@ -1,17 +1,20 @@
 import React, {useEffect} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
+// Redux
 import {getPhotos} from '../store/slices/gallerySlice';
 import {useAppDispatch, useAppSelector} from '../store/store';
+// Types
 import {PhotoType} from '../types';
-import Photo from '../components/Photo';
 import {GalleryProps} from '../../App';
+// Components
+import Photo from '../components/Photo';
 
-const Gallery = ({navigation}: GalleryProps) => {
+const Gallery = () => {
   const dispatch = useAppDispatch();
   const photos = useAppSelector(state => state.gallery.photos);
+
   useEffect(() => {
     dispatch(getPhotos());
-    console.log(photos);
   }, []);
 
   return (
@@ -20,7 +23,6 @@ const Gallery = ({navigation}: GalleryProps) => {
         {photos.map((photo: PhotoType) => {
           return (
             <Photo
-              navigation={navigation}
               userName={photo.userName}
               fullPhoto={photo.fullPhoto}
               key={photo.id}

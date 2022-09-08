@@ -34,7 +34,7 @@ const App = () => {
 
 const styles = StyleSheet.create({});
 
-type RootStackParamList = {
+export type RootStackParamList = {
   Gallery: undefined;
   ShowPhoto: {fullPhoto: string | undefined};
 };

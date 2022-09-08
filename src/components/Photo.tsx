@@ -1,23 +1,20 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {getPhotos} from '../store/slices/gallerySlice';
-import {useAppDispatch, useAppSelector} from '../store/store';
+// Types
 import {PhotoType} from '../types';
+// Navigation
+import { useNavigation } from '@react-navigation/native';
+import { ShowPhotoProps } from '../../App';
 
-const Photo: React.FC<PhotoType & any> = ({smallPhoto, userName, fullPhoto, navigation}) => {
-  const dispatch = useAppDispatch();
-  const photos = useAppSelector(state => state.gallery.photos);
-  useEffect(() => {
-    dispatch(getPhotos());
-    console.log(photos);
-  }, []);
 
+const Photo: React.FC<PhotoType> = ({smallPhoto, userName, fullPhoto}) => {
+
+  const navigation = useNavigation<ShowPhotoScreenNavigationProp>();
+  type ShowPhotoScreenNavigationProp = ShowPhotoProps['navigation'];
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{userName}</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('ShowPhoto', {
-        screen: 'ShowPhoto',
-        fullPhoto})}>
+      <TouchableOpacity onPress={() => navigation.navigate('ShowPhoto', {fullPhoto})}>
         <Image style={styles.image} source={{uri: smallPhoto}} />
       </TouchableOpacity>
     </View>

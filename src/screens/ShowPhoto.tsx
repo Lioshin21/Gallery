@@ -1,15 +1,16 @@
 import * as React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
+// Types
 import {ShowPhotoProps} from '../../App';
 
-const ShowPhoto = ({route, navigation}: ShowPhotoProps) => {
-  const fullPhoto = route.params;
+const ShowPhoto = ({route}: ShowPhotoProps) => {
+
+  const {fullPhoto} = route.params;
 
   return (
     <>
-      {console.log(fullPhoto)}
       <View>
-        <Image style={styles.image} source={{uri: JSON.stringify(fullPhoto)}} />
+        <Image style={styles.image} source={{uri: fullPhoto}} />
       </View>
     </>
   );

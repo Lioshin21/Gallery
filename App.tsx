@@ -23,7 +23,6 @@ const App = () => {
             <Stack.Screen
               name="ShowPhoto"
               component={ShowPhoto}
-              initialParams={{fullPhoto: undefined}}
             />
           </Stack.Navigator>
         </NavigationContainer>
@@ -39,10 +38,6 @@ export type RootStackParamList = {
   ShowPhoto: {fullPhoto: string | undefined};
 };
 
-export type GalleryProps = NativeStackScreenProps<
-  RootStackParamList,
-  'Gallery'
->;
 export type ShowPhotoProps = NativeStackScreenProps<
   RootStackParamList,
   'ShowPhoto'

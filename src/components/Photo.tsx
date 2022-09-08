@@ -3,18 +3,19 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 // Types
 import {PhotoType} from '../types';
 // Navigation
-import { useNavigation } from '@react-navigation/native';
-import { ShowPhotoProps } from '../../App';
-
+import {useNavigation} from '@react-navigation/native';
+import {ShowPhotoProps} from '../../App';
 
 const Photo: React.FC<PhotoType> = ({smallPhoto, userName, fullPhoto}) => {
+  type ShowPhotoScreenNavigationProp = ShowPhotoProps['navigation'];
 
   const navigation = useNavigation<ShowPhotoScreenNavigationProp>();
-  type ShowPhotoScreenNavigationProp = ShowPhotoProps['navigation'];
+
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{userName}</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('ShowPhoto', {fullPhoto})}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('ShowPhoto', {fullPhoto})}>
         <Image style={styles.image} source={{uri: smallPhoto}} />
       </TouchableOpacity>
     </View>

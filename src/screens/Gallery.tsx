@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 // Redux
 import {getPhotos} from '../store/slices/gallerySlice';
 import {useAppDispatch, useAppSelector} from '../store/store';
 // Types
 import {PhotoType} from '../types';
-import {GalleryProps} from '../../App';
 // Components
 import Photo from '../components/Photo';
 
@@ -19,7 +18,7 @@ const Gallery = () => {
 
   return (
     <View>
-      <ScrollView style={styles.container}>
+      <ScrollView>
         {photos.map((photo: PhotoType) => {
           return (
             <Photo
@@ -35,12 +34,5 @@ const Gallery = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-});
 
 export default Gallery;
